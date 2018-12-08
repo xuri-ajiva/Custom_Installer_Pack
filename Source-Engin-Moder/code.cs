@@ -116,6 +116,11 @@ namespace Source_Engin_Moder
             {
                 try
                 {
+                    if (!Directory.Exists(Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1])))
+                    {
+                        Console.WriteLine("Creating Dyrectory!");
+                        Directory.CreateDirectory(Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1]));
+                    }
                     File.Copy(Program.installfiles + "\\" + Program.cur[c][0].Substring(1), Program.installdir + "\\" + Program.cur[c][1],true);
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     Console.Write("[Copy] ");
@@ -227,7 +232,12 @@ namespace Source_Engin_Moder
             WStream2.WriteLine(Program.intedic[2]);
             WStream2.WriteLine(Program.intedic[3]);
             WStream2.WriteLine("#"+Program.installdir);
+            var fil = ("#" + Program.installdir +"\\" + Path.GetFileName(Program.installfile) + 
+                ("[" + DateTime.Now + "].inst").Replace('\\', '-').Replace('/', '-').Replace(':', '-').Replace('*', '-')
+                .Replace('?', '-').Replace('<', '-').Replace('>', '-').Replace('|', '-'));
+            WStream2.WriteLine(fil);
             WStream2.Close();
+            File.Copy(Program.installfile, fil.Substring(1),true);
             Thread.Sleep(3000);
             Environment.Exit(0);
         }

@@ -111,7 +111,7 @@
             this.MaximizeBox = false;
             this.Name = "Dialog01";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.Text = "Dialog01";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dialog01_FormClosing);
             this.ResumeLayout(false);
