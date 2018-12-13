@@ -32,12 +32,14 @@ namespace Source_Engin_Moder
         public static string installfiles = "slect!";
         public static int error = 0;
         public static bool er = false;
+        public static int page = 1;
 
         public static int interduction = 5;
 
         public static Dialog01 d1 = new Dialog01();
         public static Dialog02 d2 = new Dialog02();
         public static Dialog03 d3 = new Dialog03();
+        public static Log log = new Log();
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetConsoleWindow();
@@ -61,6 +63,17 @@ namespace Source_Engin_Moder
             Console.Title = "OSVersion:\"" + Environment.OSVersion.ToString().ToLower() + "\" User:\"" + Environment.UserName.ToString().ToUpper() + "\" Programm:\"" + Name+"\"";
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
+
+            Thread t = new Thread(() =>
+            {
+                while (true)
+                {
+                    Console.WriteLine(Program.page);
+                    Thread.Sleep(100);
+                }
+            });
+            //t.Start();
+
             run();
 
         }
@@ -69,16 +82,7 @@ namespace Source_Engin_Moder
         {
             while (true)
             {
-//                 if (Program.installdir != "slect!" && Program.installfile != "slect!" && Program.installfiles != "slect!")
-//                 {
-//                     var handle = GetConsoleWindow();
-//                     ShowWindow(handle, SW_SHOW);
-//                     code.Dialog_Setup();
-//                 }
-//                 else
-//                 {
-                    Application.Run(new Dialog01());
-/*                }*/
+                Application.Run(new Host_dialog());
             }
         }
     }

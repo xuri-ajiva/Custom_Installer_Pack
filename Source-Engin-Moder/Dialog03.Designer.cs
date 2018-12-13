@@ -121,7 +121,6 @@ namespace Source_Engin_Moder
             this.MaximizeBox = false;
             this.Name = "Dialog03";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.Text = "Dialog03";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dialog03_FormClosing);
             this.ResumeLayout(false);

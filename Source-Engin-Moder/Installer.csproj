@@ -64,13 +64,49 @@
     <Compile Include="Dialog03.Designer.cs">
       <DependentUpon>Dialog03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialog1.Designer.cs">
+      <DependentUpon>Dialog1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialog2.Designer.cs">
+      <DependentUpon>Dialog2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialog3.Designer.cs">
+      <DependentUpon>Dialog3.cs</DependentUpon>
+    </Compile>
     <Compile Include="exit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="exit.Designer.cs">
       <DependentUpon>exit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Final.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Final.Designer.cs">
+      <DependentUpon>Final.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Host_dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Host_dialog.Designer.cs">
+      <DependentUpon>Host_dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log.Designer.cs">
+      <DependentUpon>Log.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main-Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,8 +129,26 @@
     <EmbeddedResource Include="Dialog03.resx">
       <DependentUpon>Dialog03.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog1.resx">
+      <DependentUpon>Dialog1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog2.resx">
+      <DependentUpon>Dialog2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog3.resx">
+      <DependentUpon>Dialog3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="exit.resx">
       <DependentUpon>exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Final.resx">
+      <DependentUpon>Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Host_dialog.resx">
+      <DependentUpon>Host_dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log.resx">
+      <DependentUpon>Log.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main-Dialog.resx">
       <DependentUpon>Main-Dialog.cs</DependentUpon>

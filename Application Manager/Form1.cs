@@ -76,10 +76,9 @@ namespace Application_Manager
                                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                                     Console.Write("[Info] ");
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.Write(da[c].Substring(1));
-                                    Console.Write(" ##### ");
+                                    Console.Write(" # ");
                                     Console.Write(Program.cur[c][0]);
-                                    Console.Write("  ###  ");
+                                    Console.Write("  X  ");
                                     Console.Write(Program.cur[c][1]+"\n");
                                 }
                                 catch
