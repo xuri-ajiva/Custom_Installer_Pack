@@ -11,12 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application Manager", "Appl
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
+		All|x64 = All|x64
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.All|Any CPU.ActiveCfg = All|Any CPU
+		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.All|Any CPU.Build.0 = All|Any CPU
+		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.All|x64.ActiveCfg = All|Any CPU
+		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.All|x64.Build.0 = All|Any CPU
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -25,6 +31,10 @@ Global
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Release|x64.ActiveCfg = Release|Any CPU
 		{788DB702-6275-4E92-90FB-5D674F6DFBE8}.Release|x64.Build.0 = Release|Any CPU
+		{58DBD907-A305-49F5-886E-0E01AF052213}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{58DBD907-A305-49F5-886E-0E01AF052213}.All|Any CPU.Build.0 = Release|Any CPU
+		{58DBD907-A305-49F5-886E-0E01AF052213}.All|x64.ActiveCfg = Release|Any CPU
+		{58DBD907-A305-49F5-886E-0E01AF052213}.All|x64.Build.0 = Release|Any CPU
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -33,6 +43,10 @@ Global
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Release|x64.ActiveCfg = Release|Any CPU
 		{58DBD907-A305-49F5-886E-0E01AF052213}.Release|x64.Build.0 = Release|Any CPU
+		{EB2D03AB-E745-477F-840D-C54995DA3D31}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2D03AB-E745-477F-840D-C54995DA3D31}.All|Any CPU.Build.0 = Release|Any CPU
+		{EB2D03AB-E745-477F-840D-C54995DA3D31}.All|x64.ActiveCfg = Release|x64
+		{EB2D03AB-E745-477F-840D-C54995DA3D31}.All|x64.Build.0 = Release|x64
 		{EB2D03AB-E745-477F-840D-C54995DA3D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB2D03AB-E745-477F-840D-C54995DA3D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB2D03AB-E745-477F-840D-C54995DA3D31}.Debug|x64.ActiveCfg = Debug|x64
