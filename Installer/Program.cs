@@ -68,7 +68,7 @@ namespace Source_Engin_Moder
             //Application.SetCompatibleTextRenderingDefault(false);
             
             Console.Title = "OSVersion:\"" + Environment.OSVersion.ToString().ToLower() + "\" User:\"" + Environment.UserName.ToString().ToUpper() + "\" Programm:\"" + Name+"\"";
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             //# hide console
             var handle = GetConsoleWindow();

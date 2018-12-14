@@ -207,8 +207,12 @@ namespace Source_Engin_Moder
 
         private void button1_Click(object sender, EventArgs e)
         {
-            l.Show();
-            this.log = l.listBox1;
+            try
+            {
+                l.Show();
+                this.log = l.listBox1;
+            }
+            catch { }
         }
 
         private void B_back_Click(object sender, EventArgs e)
