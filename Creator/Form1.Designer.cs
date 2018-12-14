@@ -1,6 +1,6 @@
 ﻿namespace Creator
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -39,9 +39,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Update = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -161,15 +161,13 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
-            // button5
+            // textBox1
             // 
-            this.button5.Location = new System.Drawing.Point(478, 346);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 26);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "- >";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBox1.Location = new System.Drawing.Point(763, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(143, 20);
+            this.textBox1.TabIndex = 8;
             // 
             // button6
             // 
@@ -182,13 +180,15 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // textBox1
+            // button5
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBox1.Location = new System.Drawing.Point(763, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
-            this.textBox1.TabIndex = 8;
+            this.button5.Location = new System.Drawing.Point(478, 346);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 26);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "- >";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button7
             // 
@@ -267,7 +267,7 @@
             this.textBox5.Size = new System.Drawing.Size(322, 20);
             this.textBox5.TabIndex = 17;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,8 +284,8 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Main";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

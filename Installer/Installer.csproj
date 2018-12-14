@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{788DB702-6275-4E92-90FB-5D674F6DFBE8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Source_Engin_Moder</RootNamespace>
-    <AssemblyName>Source-Engin-Moder</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Installer</RootNamespace>
+    <AssemblyName>Installer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,25 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="code.cs" />
-    <Compile Include="Dialog01.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialog01.Designer.cs">
-      <DependentUpon>Dialog01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog02.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialog02.Designer.cs">
-      <DependentUpon>Dialog02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog03.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialog03.Designer.cs">
-      <DependentUpon>Dialog03.cs</DependentUpon>
-    </Compile>
+    <None Include="app.manifest" />
+    <None Include="code.cs.code root" />
     <Compile Include="Dialog1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,15 +109,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialog01.resx">
-      <DependentUpon>Dialog01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialog02.resx">
-      <DependentUpon>Dialog02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialog03.resx">
-      <DependentUpon>Dialog03.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialog1.resx">
       <DependentUpon>Dialog1.cs</DependentUpon>
     </EmbeddedResource>

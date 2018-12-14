@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Source-Engin-Moder\Installer.csproj", "{788DB702-6275-4E92-90FB-5D674F6DFBE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{788DB702-6275-4E92-90FB-5D674F6DFBE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Creator", "Creator\Creator.csproj", "{58DBD907-A305-49F5-886E-0E01AF052213}"
 EndProject

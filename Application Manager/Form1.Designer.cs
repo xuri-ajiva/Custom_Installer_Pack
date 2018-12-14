@@ -128,7 +128,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstTransfers);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

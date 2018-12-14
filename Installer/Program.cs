@@ -17,30 +17,35 @@ namespace Source_Engin_Moder
         /// <summary>
         /// 
 
-        public static string Name = "Source-Engin-Moder";
+        public static string Name = "Installer";
 
         /// 
         /// </summary>
-
+        //# reg
         public static string reg = Environment.SystemDirectory + @"\Installer_Custom\";
         public static string regname = "install.inst";
         public static string regfull = reg + regname;
-        public static string[][] cur = new string[9999][];
-        public static string installfile = "slect!";
-        public static string installdir = "slect!";
+
+        //# install vars
+        public static string installfile = "";
+        public static string installdir = "";
+        public static string installfiles = "";
+
+        //# buffer
         public static string[] intedic = new string[9999];
-        public static string installfiles = "slect!";
+        public static string[][] cur = new string[9999][];
+        public static int interduction = 5;
+
+        //# errror and ui controal
         public static int error = 0;
         public static bool er = false;
         public static int page = 1;
 
-        public static int interduction = 5;
-
-        public static Dialog01 d1 = new Dialog01();
-        public static Dialog02 d2 = new Dialog02();
-        public static Dialog03 d3 = new Dialog03();
+        //# Dependensis
         public static Log log = new Log();
 
+
+        //* Kernel imports
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetConsoleWindow();
 
@@ -49,21 +54,27 @@ namespace Source_Engin_Moder
 
         public const int SW_HIDE = 0;
         public const int SW_SHOW = 5;
+        //*
 
+        // # Start
         [STAThread]
         static void Main(string[] args)
         {
 
-                Directory.CreateDirectory(Program.reg);
-                File.Open(Program.regfull, FileMode.OpenOrCreate).Close();
+            Directory.CreateDirectory(Program.reg);
+            File.Open(Program.regfull, FileMode.OpenOrCreate).Close();
 
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             
             Console.Title = "OSVersion:\"" + Environment.OSVersion.ToString().ToLower() + "\" User:\"" + Environment.UserName.ToString().ToUpper() + "\" Programm:\"" + Name+"\"";
+            Thread.Sleep(1000);
+
+            //# hide console
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
 
+            /*/# run new thread with info
             Thread t = new Thread(() =>
             {
                 while (true)
@@ -72,8 +83,9 @@ namespace Source_Engin_Moder
                     Thread.Sleep(100);
                 }
             });
-            //t.Start();
+            *///t.Start();
 
+            //*** Run Application ***\\
             run();
 
         }
