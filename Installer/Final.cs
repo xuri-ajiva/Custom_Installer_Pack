@@ -56,7 +56,7 @@ namespace Installer
 
         private void Final_Load(object sender, EventArgs e)
         {
-            Program.readfile();
+            VAR.readfile();
             update.Start();
         }
         

@@ -69,7 +69,7 @@ namespace Installer
         private void s()
         {
             VAR.installdir = textBox1.Text;
-            Program.readfile();
+            AIO.VAR.readfile();
             if (VAR.intedic[4].Substring(1, 4) == "this")
                 Dialog3.skip = true;
         }
