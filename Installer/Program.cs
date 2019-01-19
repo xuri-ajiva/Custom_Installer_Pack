@@ -26,6 +26,10 @@ namespace Installer
         [STAThread]
         static void Main(string[] args)
         {
+            //building programm dir
+            Directory.CreateDirectory(VAR.reg);
+            File.Open(VAR.regfull, FileMode.OpenOrCreate).Close();
+
             Console.Title = "OSVersion:\"" + Environment.OSVersion.ToString().ToLower() + "\" User:\"" + Environment.UserName.ToString().ToUpper() + "\" Programm:\"" + VAR.Name + "\"";
             Thread.Sleep(100);
          
@@ -49,11 +53,11 @@ namespace Installer
             fas.FileAssociation.CreateAssociation("_Installer_custom_", "Installer", "C:\\Windows\\SysWOW64\\Installer_Custom\\Installer.exe", "inst", VAR.regiconfull);
 
             ///Build icon hex use '[application].exe >output.hex'
-            //var x = File.ReadAllBytes(@"C:\ProgramData\Microsoft\Windows\DeviceMetadataCache\dmrccache\en-US\6dad89d3-68a4-4000-acc2-f7ac969847cd\DeviceStage\Task\{05f68c0e-d993-4e8e-b40b-c8f9c013510d}\task_icon_11.ico");
+            //var x = File.ReadAllBytes(@"C:\Users\xuri\source\repos\Projekts\Custom_Installer_pack\Installer\installer.ico");
             //string r = BitConverter.ToString(x).Replace("-", string.Empty);
             //Console.WriteLine(r);
             ///*
-
+            
             //build icon bytes
             Installer.iconcode.build();
             //create icon
@@ -61,7 +65,6 @@ namespace Installer
                 File.Create(VAR.regiconfull);
             else
                 File.WriteAllBytes(VAR.regiconfull, Installer.iconcode.icon_byte);
-            //set icon in regestry
         }
 
         private static void First()

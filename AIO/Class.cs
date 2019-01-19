@@ -18,7 +18,7 @@ namespace AIO
         /// 
         /// </summary>
         //# reg
-        public static string reg = @"C:\Windows\SysWOW64" + @"\Installer_Custom\";
+        public static string reg = @"C:\Windows" + @"\Installer_Custom\";
         public static string dll = "AIO.dll"; 
         public static string regname = "install.inst";
         public static string regiconname = "installer.ico";
@@ -99,7 +99,8 @@ namespace AIO
                 Console.WriteLine("[START]: " + VAR.reg + Path.GetFileName(Application.ExecutablePath));
                 Thread.Sleep(1000);
                 Process.Start(VAR.reg + Path.GetFileName(Application.ExecutablePath));
-                Environment.Exit(+1);
+                Thread.Sleep(10);
+                Environment.Exit(0);
             }
         }
     }
