@@ -145,7 +145,8 @@ namespace Installer
         }
         public void G_retry()
         {
-            if (MessageBox.Show("Installation With " + VAR.error + " Errors finished!\nRetry ?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand) == DialogResult.Yes)
+            var r = MessageBox.Show("Installation With " + VAR.error + " Errors finished!\nRetry ?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+            if (r == DialogResult.Yes)
             {
                 this.Invoke((MethodInvoker)delegate
                 {
@@ -154,6 +155,9 @@ namespace Installer
                 VAR.er = true;
                 VAR.error = 0;
                 Install_prepar();
+            }else if (r == DialogResult.No)
+            {
+                surccess();
             }
             
         }

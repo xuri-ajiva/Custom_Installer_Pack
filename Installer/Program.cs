@@ -50,7 +50,7 @@ namespace Installer
 
         private static void Reg()
         {
-            fas.FileAssociation.CreateAssociation("_Installer_custom_", "Installer", "C:\\Windows\\SysWOW64\\Installer_Custom\\Installer.exe", "inst", VAR.regiconfull);
+            fas.FileAssociation.CreateAssociation("_Installer_custom_", "Installer", "C:\\Windows\\Installer_Custom\\Installer.exe", "inst", VAR.regiconfull);
 
             ///Build icon hex use '[application].exe >output.hex'
             //var x = File.ReadAllBytes(@"C:\Users\xuri\source\repos\Projekts\Custom_Installer_pack\Installer\installer.ico");
