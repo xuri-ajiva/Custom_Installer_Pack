@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AIO;
 
 namespace Creator
 {
@@ -102,26 +103,22 @@ namespace Creator
             }
         }
         string t1;
-        string t2;
-        string t3;
-        string t4;
+        string t5;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Random r = new Random(); 
             textBox5.Text = ("Random Name: " + r.NextDouble()).Replace('\\','-').Replace('/', '-').Replace(':', '-').Replace('*', '-').Replace('?', '-').Replace('<', '-').Replace('>', '-').Replace('|', '-');
             t1 = textBox2.Text;
-            t2 = textBox3.Text;
-            t3 = textBox4.Text;
-            t4 = textBox5.Text;
+            t5 = textBox5.Text;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text != t1 && textBox3.Text != t2 && textBox4.Text != t3&& textBox5.Text != t4)
+            if (textBox2.Text != t1 && textBox5.Text !=t5)
             {
                 string[] x = new string[99999];
-                for (int i = 5; i < ( (listBox1.Items.Count >= listBox2.Items.Count) ? listBox1.Items.Count:listBox2.Items.Count) ; i++)
+                for (int i = VAR.interduction; i < ((listBox1.Items.Count >= listBox2.Items.Count) ? listBox1.Items.Count : listBox2.Items.Count); i++)
                 {
                     x[i] = "#" + listBox1.Items[i] + ">" + listBox2.Items[i];
                 }
@@ -129,7 +126,7 @@ namespace Creator
                 x[1] = "#" + textBox3.Text;
                 x[2] = "#" + textBox4.Text;
                 x[3] = "#" + textBox5.Text.Replace('\\', '-').Replace('/', '-').Replace(':', '-').Replace('*', '-').Replace('?', '-').Replace('<', '-').Replace('>', '-').Replace('|', '-');
-                x[4] = "#";
+                x[4] = "#" + (checkBox1.Checked ? "this" : "null");
                 x[5] = "#";
 
                 SaveFileDialog s = new SaveFileDialog
@@ -141,6 +138,8 @@ namespace Creator
                     System.IO.File.WriteAllLines(s.FileName, x);
                 }
             }
+            else
+                MessageBox.Show("Bitte einen eigenen Namen und eine andere beschreibung wählen Wählen!","Error",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
             
         }
     }

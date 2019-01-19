@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AIO;
 
 namespace Installer
 {
@@ -19,7 +20,7 @@ namespace Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Environment.Exit(Program.error);
+            Environment.Exit(VAR.error);
         }
     }
 }

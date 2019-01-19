@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AIO;
 
 namespace Installer
 {
@@ -22,7 +23,7 @@ namespace Installer
             this.Grid.Size = new System.Drawing.Size(500, 500);
             this.ClientSize = new System.Drawing.Size(500, 500);
             /*
-            switch (Program.page)
+            switch (VAR.page)
             {
                 case 1:
                     this.dialog = new Source_Engin_Moder.Dialog1();
@@ -59,11 +60,11 @@ namespace Installer
         private int temp = 0;
         private void update_Tick(object sender, EventArgs e)
         {
-            if (Program.page != temp)
+            if (VAR.page != temp)
             {
                 this.Grid.Controls.Clear();
                 this.dialog = null;
-                switch (Program.page)
+                switch (VAR.page)
                 {
 
                     case 1:
@@ -71,7 +72,7 @@ namespace Installer
                         break;
                     case 2:
                         this.dialog = new Installer.Dialog2();
-                        if (Program.min_page == 2)
+                        if (VAR.min_page == 2)
                             Dialog2.back = false;
                         break;
                     case 3:
@@ -85,7 +86,7 @@ namespace Installer
                         break;
                 }
             }
-            temp = Program.page;
+            temp = VAR.page;
             this.dialog.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dialog.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dialog.Location = new System.Drawing.Point(0, 0);
@@ -113,7 +114,7 @@ namespace Installer
             exit ex = new exit();
             if (ex.ShowDialog() == DialogResult.OK)
             {
-                Environment.Exit(Program.error);
+                Environment.Exit(VAR.error);
             }
             else
             {

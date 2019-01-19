@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using AIO;
 
 namespace Installer
 {
@@ -17,7 +18,7 @@ namespace Installer
         public Dialog3()
         {
             InitializeComponent();
-            textBox1.Text = Program.installfiles;
+            textBox1.Text = VAR.installfiles;
         }
         private void b_cancle_Click(object sender, EventArgs e)
         {
@@ -25,7 +26,7 @@ namespace Installer
             exit ex = new exit();
             if (ex.ShowDialog() == DialogResult.OK)
             {
-                Environment.Exit(Program.error);
+                Environment.Exit(VAR.error);
             }
             else
             {
@@ -44,13 +45,13 @@ namespace Installer
         private void b_next_Click(object sender, EventArgs e)
         {
             s();
-            Program.page = 4;
+            VAR.page = 4;
         }
 
         private void B_back_Click(object sender, EventArgs e)
         {
             s();
-            Program.page = 2;
+            VAR.page = 2;
         }
 
         private void Dialog01_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,7 +59,7 @@ namespace Installer
             exit ex = new exit();
             if (ex.ShowDialog() == DialogResult.OK)
             {
-                Environment.Exit(Program.error);
+                Environment.Exit(VAR.error);
             }
             else
             {
@@ -67,14 +68,14 @@ namespace Installer
         }
         private void s()
         {
-            Program.installfiles = textBox1.Text;
+            VAR.installfiles = textBox1.Text;
         }
 
         private void Dialog3_Load(object sender, EventArgs e)
         {
             if (skip)
             {
-                textBox1.Text = Path.GetDirectoryName(Program.installfile) + @"\";
+                textBox1.Text = Path.GetDirectoryName(VAR.installfile) + @"\";
                 b_next_Click(null, null);
             }
         }

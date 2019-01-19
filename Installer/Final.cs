@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using AIO;
+
 
 namespace Installer
 {
@@ -28,7 +30,7 @@ namespace Installer
             
             Thread t = new Thread(() => {
                 var para = "";
-                if (Program.installdir != para && Program.installfile != para && Program.installfiles != para)
+                if (VAR.installdir != para && VAR.installfile != para && VAR.installfiles != para)
                 {
                     try
                     {
@@ -62,11 +64,11 @@ namespace Installer
         {
             try
             {
-                label1.Text = "Info: " + Program.intedic[0].Substring(1);
-                label2.Text = "Download: " + Program.intedic[1].Substring(1);
-                label3.Text = "Version: " + Program.intedic[2].Substring(1);
-                label4.Text = "Name: " + Program.intedic[3].Substring(1);
-                label5.Text = "\nInstallations Verzeichnis: " + Program.installdir;
+                label1.Text = "Info: " + VAR.intedic[0].Substring(1);
+                label2.Text = "Download: " + VAR.intedic[1].Substring(1);
+                label3.Text = "Version: " + VAR.intedic[2].Substring(1);
+                label4.Text = "Name: " + VAR.intedic[3].Substring(1);
+                label5.Text = "\nInstallations Verzeichnis: " + VAR.installdir;
             }
             catch{ }
             try
@@ -83,18 +85,18 @@ namespace Installer
         }
         private void Install_prepar()
         {
-            for (int i = Program.interduction; i < Program.intedic.Length; i++)
+            for (int i = VAR.interduction; i < VAR.intedic.Length; i++)
             {
-                Program.cur[i] = Program.intedic[i].Split('>');
+                VAR.cur[i] = VAR.intedic[i].Split('>');
                 this.Invoke((MethodInvoker)delegate
                 {
-                    log.Items.Add("[Info] " + Program.intedic[i].Substring(1));
+                    log.Items.Add("[Info] " + VAR.intedic[i].Substring(1));
                 });
 
             }
             
             start_install();
-            if (Program.error == 0)
+            if (VAR.error == 0)
             {
                 surccess();
             }
@@ -102,7 +104,7 @@ namespace Installer
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    log.Items.Add("Installation With " + Program.error + " Errors finished!");
+                    log.Items.Add("Installation With " + VAR.error + " Errors finished!");
                 });
                 G_retry();
             }
@@ -110,29 +112,29 @@ namespace Installer
         public void start_install()
         {
             t_p();
-            for (int c = Program.interduction; c < Program.intedic.Length; c++)
+            for (int c = VAR.interduction; c < VAR.intedic.Length; c++)
             {
                 try
                 {
-                    if (!Directory.Exists(Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1])))
+                    if (!Directory.Exists(Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1])))
                     {
                         this.Invoke((MethodInvoker)delegate
                         {
-                            log.Items.Add("Creating Dyrectory: ["+ Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1])+"]");
+                            log.Items.Add("Creating Dyrectory: ["+ Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1])+"]");
                         });
-                        Directory.CreateDirectory(Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1]));
+                        Directory.CreateDirectory(Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1]));
                     }
-                    File.Copy(Program.installfiles + "\\" + Program.cur[c][0].Substring(1), Program.installdir + "\\" + Program.cur[c][1], true);
+                    File.Copy(VAR.installfiles + "\\" + VAR.cur[c][0].Substring(1), VAR.installdir + "\\" + VAR.cur[c][1], true);
                     this.Invoke((MethodInvoker)delegate
                     {
-                        log.Items.Add("[Copy] " + Program.installfiles + "\\" + Program.cur[c][0].Substring(1) + "   =>   " + Program.installdir + "\\" + Program.cur[c][1]);
+                        log.Items.Add("[Copy] " + VAR.installfiles + "\\" + VAR.cur[c][0].Substring(1) + "   =>   " + VAR.installdir + "\\" + VAR.cur[c][1]);
                     });
                 }
                 catch (Exception exp)
                 {
                     if (exp.Message.ToLower() != "Der Index war außerhalb des Arraybereichs.".ToLower())
                     {
-                        Program.error++;
+                        VAR.error++;
                         this.Invoke((MethodInvoker)delegate
                         {
                             log.Items.Add("[Error]:" + exp.Message);
@@ -143,14 +145,14 @@ namespace Installer
         }
         public void G_retry()
         {
-            if (MessageBox.Show("Installation With " + Program.error + " Errors finished!\nRetry ?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand) == DialogResult.Yes)
+            if (MessageBox.Show("Installation With " + VAR.error + " Errors finished!\nRetry ?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand) == DialogResult.Yes)
             {
                 this.Invoke((MethodInvoker)delegate
                 {
                     log.Items.Clear();
                 });
-                Program.er = true;
-                Program.error = 0;
+                VAR.er = true;
+                VAR.error = 0;
                 Install_prepar();
             }
             
@@ -158,17 +160,17 @@ namespace Installer
         private void t_p()
         {
 
-            StreamWriter WStream1 = new StreamWriter(Program.regfull, true);
-            WStream1.WriteLine(Program.intedic[3]);
+            StreamWriter WStream1 = new StreamWriter(VAR.regfull, true);
+            WStream1.WriteLine(VAR.intedic[3]);
             WStream1.Close();
-            File.Delete(Program.reg + @"\" + Program.intedic[3].Substring(1));
-            StreamWriter WStream2 = new StreamWriter(Program.reg + @"\" + Program.intedic[3].Substring(1), true);
-            WStream2.WriteLine(Program.intedic[0]);
-            WStream2.WriteLine(Program.intedic[1]);
-            WStream2.WriteLine(Program.intedic[2]);
-            WStream2.WriteLine(Program.intedic[3]);
-            WStream2.WriteLine("#" + Program.installdir);
-            var fil = ("#" + Program.installdir + "\\" + Path.GetFileName(Program.installfile) +
+            File.Delete(VAR.reg + @"\" + VAR.intedic[3].Substring(1));
+            StreamWriter WStream2 = new StreamWriter(VAR.reg + @"\" + VAR.intedic[3].Substring(1), true);
+            WStream2.WriteLine(VAR.intedic[0]);
+            WStream2.WriteLine(VAR.intedic[1]);
+            WStream2.WriteLine(VAR.intedic[2]);
+            WStream2.WriteLine(VAR.intedic[3]);
+            WStream2.WriteLine("#" + VAR.installdir);
+            var fil = ("#" + VAR.installdir + "\\" + Path.GetFileName(VAR.installfile) +
                 ("[" + DateTime.Now + "].inst").Replace('\\', '-').Replace('/', '-').Replace(':', '-').Replace('*', '-')
                 .Replace('?', '-').Replace('<', '-').Replace('>', '-').Replace('|', '-'));
             WStream2.WriteLine(fil);
@@ -181,7 +183,7 @@ namespace Installer
                 });
                 Directory.CreateDirectory(Path.GetDirectoryName(fil.Substring(1)));
             }
-            File.Copy(Program.installfile, fil.Substring(1), true);
+            File.Copy(VAR.installfile, fil.Substring(1), true);
         }
         public void surccess()
         {
@@ -197,7 +199,7 @@ namespace Installer
 
         private void b_cancle_Click(object sender, EventArgs e)
         {
-            Environment.Exit(Program.error);
+            Environment.Exit(VAR.error);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -214,7 +216,7 @@ namespace Installer
 
         private void B_back_Click(object sender, EventArgs e)
         {
-            Program.page--;
+            VAR.page--;
         }
     }
 }

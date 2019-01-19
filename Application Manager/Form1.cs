@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using AIO;
 
 namespace Application_Manager
 {
@@ -24,21 +25,21 @@ namespace Application_Manager
         {
             try
             {
-                var fiel = File.ReadLines(Program.regfull).Where(x => x.StartsWith("#")).ToArray();
+                var fiel = File.ReadLines(VAR.regfull).Where(x => x.StartsWith("#")).ToArray();
                 foreach (var fil in fiel)
                 {
                     ListViewItem i = new ListViewItem();
                     try
                     {
-                        Program.intedic = File.ReadLines(Program.reg + fil.Substring(1)).Where(x => x.StartsWith("#")).ToArray();
-                        i.Text = Program.intedic[3].Substring(1);
-                        i.SubItems.Add(Program.intedic[2].Substring(1));
-                        i.SubItems.Add(Program.intedic[1].Substring(1));
-                        i.SubItems.Add(Program.intedic[0].Substring(1));
-                        i.SubItems.Add(Program.intedic[4].Substring(1));
-                        i.SubItems.Add(Program.intedic[5].Substring(1));
-                        i.Tag = Program.intedic[3].Substring(1);
-                        i.Name = Program.intedic[3].Substring(1);
+                        VAR.intedic = File.ReadLines(VAR.reg + fil.Substring(1)).Where(x => x.StartsWith("#")).ToArray();
+                        i.Text = VAR.intedic[3].Substring(1);
+                        i.SubItems.Add(VAR.intedic[2].Substring(1));
+                        i.SubItems.Add(VAR.intedic[1].Substring(1));
+                        i.SubItems.Add(VAR.intedic[0].Substring(1));
+                        i.SubItems.Add(VAR.intedic[4].Substring(1));
+                        i.SubItems.Add(VAR.intedic[5].Substring(1));
+                        i.Tag = VAR.intedic[3].Substring(1);
+                        i.Name = VAR.intedic[3].Substring(1);
                         lstTransfers.Items.Add(i);
                         i.EnsureVisible();
 
@@ -61,18 +62,18 @@ namespace Application_Manager
             {
 
                 var da = File.ReadLines(lstTransfers.SelectedItems[si].SubItems[5].Text).Where(x => x.StartsWith("#")).ToArray();
-                for (int c = Program.interduction; c < da.Length; c++)
+                for (int c = VAR.interduction; c < da.Length; c++)
                 {
-                    Program.cur[c] = da[c].Split('>');
+                    VAR.cur[c] = da[c].Split('>');
                     try
                     {
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
                         Console.Write("[Info] ");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" # ");
-                        Console.Write(Program.cur[c][0]);
+                        Console.Write(VAR.cur[c][0]);
                         Console.Write("  X  ");
-                        Console.Write(Program.cur[c][1] + "\n");
+                        Console.Write(VAR.cur[c][1] + "\n");
                     }
                     catch
                     {
@@ -80,32 +81,32 @@ namespace Application_Manager
                 }
 
 
-                for (int c = Program.interduction; c < da.Length; c++)
+                for (int c = VAR.interduction; c < da.Length; c++)
                 {
                     try
                     {
-                        File.Delete(lstTransfers.SelectedItems[si].SubItems[4].Text + "\\" + Program.cur[c][1]);
+                        File.Delete(lstTransfers.SelectedItems[si].SubItems[4].Text + "\\" + VAR.cur[c][1]);
                         /*
-                        File.Delete(@"c:\r\" + Program.cur[c][0].Substring(1));
-                        File.Move(lstTransfers.SelectedItems[0].SubItems[4].Text + "\\" + Program.cur[c][0].Substring(1), @"c:\r\" + Program.cur[c][0].Substring(1));
+                        File.Delete(@"c:\r\" + VAR.cur[c][0].Substring(1));
+                        File.Move(lstTransfers.SelectedItems[0].SubItems[4].Text + "\\" + VAR.cur[c][0].Substring(1), @"c:\r\" + VAR.cur[c][0].Substring(1));
                         */
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
                         Console.Write("[Delete] ");
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(lstTransfers.SelectedItems[si].SubItems[4].Text + "\\" + Program.cur[c][0].Substring(1));
+                        Console.WriteLine(lstTransfers.SelectedItems[si].SubItems[4].Text + "\\" + VAR.cur[c][0].Substring(1));
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (Exception exp)
                     {
 
-                        Program.error++;
+                        VAR.error++;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("[Error]:" + exp.Message);
                         Console.ForegroundColor = ConsoleColor.White;
 
                     }
                 }
-                if (Program.error < 5)
+                if (VAR.error < 5)
                 {
                     File.Delete(lstTransfers.SelectedItems[si].SubItems[5].Text);
                     dl_reg(si);
@@ -118,7 +119,7 @@ namespace Application_Manager
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.error = 0;
+            VAR.error = 0;
             for (var si = 0; si < lstTransfers.SelectedItems.Count; si++)
             {
                 try
@@ -135,10 +136,10 @@ namespace Application_Manager
 
         private void dl_reg(int si)
         {
-            File.Delete(Program.reg + @"\" + lstTransfers.SelectedItems[si].SubItems[0].Text);
-            Console.WriteLine(Program.reg + @"\" + lstTransfers.SelectedItems[si].SubItems[0].Text);
+            File.Delete(VAR.reg + @"\" + lstTransfers.SelectedItems[si].SubItems[0].Text);
+            Console.WriteLine(VAR.reg + @"\" + lstTransfers.SelectedItems[si].SubItems[0].Text);
             var intedics = new string[9999];
-            var redet = File.ReadLines(Program.regfull).Where(x => x.StartsWith("#")).ToArray();
+            var redet = File.ReadLines(VAR.regfull).Where(x => x.StartsWith("#")).ToArray();
             for (var i = 0;i<redet.Length;i++)
             {
                 if (redet[i].Substring(1) != (lstTransfers.SelectedItems[si].SubItems[0].Text))
@@ -154,11 +155,11 @@ namespace Application_Manager
                 }
             }
 
-            File.Delete(Program.regfull + "old");
-            File.Move(Program.regfull, Program.regfull+"old");
-            File.Create(Program.regfull).Close();
+            File.Delete(VAR.regfull + "old");
+            File.Move(VAR.regfull, VAR.regfull+"old");
+            File.Create(VAR.regfull).Close();
 
-            StreamWriter WStream2 = new StreamWriter(Program.regfull, true);
+            StreamWriter WStream2 = new StreamWriter(VAR.regfull, true);
 
             foreach ( var j in intedics)
             {
@@ -193,7 +194,7 @@ namespace Application_Manager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.error = 0;
+            VAR.error = 0;
             for (var si = 0; si < lstTransfers.SelectedItems.Count; si++)
             {
                 try

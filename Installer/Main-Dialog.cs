@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AIO;
 
 namespace Installer
 {
@@ -21,8 +22,8 @@ namespace Installer
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Program.installfile = openFileDialog1.FileName;
-                textBox1.Text = Program.installfile;
+                VAR.installfile = openFileDialog1.FileName;
+                textBox1.Text = VAR.installfile;
             }
         }
 
@@ -30,8 +31,8 @@ namespace Installer
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                Program.installdir = folderBrowserDialog1.SelectedPath;
-                textBox2.Text = Program.installdir;
+                VAR.installdir = folderBrowserDialog1.SelectedPath;
+                textBox2.Text = VAR.installdir;
             }
         }
 
@@ -39,8 +40,8 @@ namespace Installer
         {
             if (folderBrowserDialog2.ShowDialog() == DialogResult.OK)
             {
-                Program.installfiles = folderBrowserDialog2.SelectedPath;
-                textBox3.Text = Program.installfiles;
+                VAR.installfiles = folderBrowserDialog2.SelectedPath;
+                textBox3.Text = VAR.installfiles;
             }
         }
     }
