@@ -1,4 +1,4 @@
-﻿namespace Source_Engin_Moder
+﻿namespace Installer
 {
     partial class Dialog3
     {
@@ -88,7 +88,7 @@
             this.b_next.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.b_next.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
             this.b_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.b_next.Location = new System.Drawing.Point(335, 468);
+            this.b_next.Location = new System.Drawing.Point(334, 468);
             this.b_next.Name = "b_next";
             this.b_next.Size = new System.Drawing.Size(75, 22);
             this.b_next.TabIndex = 6;
@@ -108,6 +108,7 @@
             this.Controls.Add(this.b_next);
             this.Name = "Dialog3";
             this.Size = new System.Drawing.Size(500, 500);
+            this.Load += new System.EventHandler(this.Dialog3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,4 @@
-﻿namespace Source_Engin_Moder
+﻿namespace Installer
 {
     partial class Final
     {
@@ -98,9 +98,9 @@
             this.label1.Location = new System.Drawing.Point(27, 54);
             this.label1.Margin = new System.Windows.Forms.Padding(10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(232, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "label1";
+            this.label1.Text = "If You see this you have not filled all Parameters";
             // 
             // label2
             // 
@@ -108,9 +108,9 @@
             this.label2.Location = new System.Drawing.Point(27, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(232, 13);
             this.label2.TabIndex = 19;
-            this.label2.Text = "label2";
+            this.label2.Text = "If You see this you have not filled all Parameters";
             // 
             // label3
             // 
@@ -118,9 +118,9 @@
             this.label3.Location = new System.Drawing.Point(27, 120);
             this.label3.Margin = new System.Windows.Forms.Padding(10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(232, 13);
             this.label3.TabIndex = 20;
-            this.label3.Text = "label3";
+            this.label3.Text = "If You see this you have not filled all Parameters";
             // 
             // label4
             // 
@@ -128,9 +128,9 @@
             this.label4.Location = new System.Drawing.Point(27, 153);
             this.label4.Margin = new System.Windows.Forms.Padding(10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(232, 13);
             this.label4.TabIndex = 21;
-            this.label4.Text = "label4";
+            this.label4.Text = "If You see this you have not filled all Parameters";
             // 
             // label5
             // 
@@ -138,9 +138,9 @@
             this.label5.Location = new System.Drawing.Point(27, 186);
             this.label5.Margin = new System.Windows.Forms.Padding(10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(232, 13);
             this.label5.TabIndex = 22;
-            this.label5.Text = "label5";
+            this.label5.Text = "If You see this you have not filled all Parameters";
             // 
             // update
             // 
@@ -152,11 +152,10 @@
             this.log.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.log.ForeColor = System.Drawing.Color.Green;
             this.log.FormattingEnabled = true;
-            this.log.Location = new System.Drawing.Point(30, 238);
+            this.log.Location = new System.Drawing.Point(30, 225);
             this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(436, 160);
+            this.log.Size = new System.Drawing.Size(436, 186);
             this.log.TabIndex = 23;
-            this.log.Visible = false;
             // 
             // button1
             // 
@@ -169,7 +168,6 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "Log";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Final

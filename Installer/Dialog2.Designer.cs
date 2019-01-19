@@ -1,6 +1,6 @@
-﻿namespace Source_Engin_Moder
+﻿namespace Installer
 {
-    partial class Dialog2
+    public partial class Dialog2
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -115,11 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.FolderBrowserDialog fbd;
-        private System.Windows.Forms.Button open;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button b_cancle;
-        private System.Windows.Forms.Button B_back;
-        private System.Windows.Forms.Button b_next;
+        public System.Windows.Forms.FolderBrowserDialog fbd;
+        public System.Windows.Forms.Button open;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Button B_back;
+        public System.Windows.Forms.Button b_cancle;
+        public System.Windows.Forms.Button b_next;
     }
 }

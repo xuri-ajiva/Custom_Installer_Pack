@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Dialog1 : UserControl
     {
@@ -37,6 +37,7 @@ namespace Source_Engin_Moder
         {
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                textBox1.Text = ofd.FileName;
                 s();
             }
         }
@@ -68,7 +69,6 @@ namespace Source_Engin_Moder
         }
         private void s()
         {
-            textBox1.Text = ofd.FileName;
             Program.installfile = textBox1.Text;
         }
     }

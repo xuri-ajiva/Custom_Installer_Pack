@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Log : Form
     {

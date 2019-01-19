@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Dialog3 : UserControl
     {
+        public static bool skip = false;
         public Dialog3()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace Source_Engin_Moder
         {
             if (fbd.ShowDialog() == DialogResult.OK)
             {
+                textBox1.Text = fbd.SelectedPath;
                 s();
             }
         }
@@ -64,8 +67,16 @@ namespace Source_Engin_Moder
         }
         private void s()
         {
-            Program.installfiles = fbd.SelectedPath;
-            textBox1.Text = Program.installfiles;
+            Program.installfiles = textBox1.Text;
+        }
+
+        private void Dialog3_Load(object sender, EventArgs e)
+        {
+            if (skip)
+            {
+                textBox1.Text = Path.GetDirectoryName(Program.installfile) + @"\";
+                b_next_Click(null, null);
+            }
         }
     }
 }

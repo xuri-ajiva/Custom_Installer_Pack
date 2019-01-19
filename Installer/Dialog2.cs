@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Dialog2 : UserControl
     {
+        public static bool back = true;
         public Dialog2()
         {
             InitializeComponent();
             textBox1.Text = Program.installdir;
+            B_back.Enabled=back;
         }
         private void b_cancle_Click(object sender, EventArgs e)
         {
@@ -34,6 +36,7 @@ namespace Source_Engin_Moder
         {
             if (fbd.ShowDialog() == DialogResult.OK)
             {
+                textBox1.Text = fbd.SelectedPath;
                 s();
             }
         }
@@ -64,8 +67,11 @@ namespace Source_Engin_Moder
         }
         private void s()
         {
-            textBox1.Text = fbd.SelectedPath;
             Program.installdir = textBox1.Text;
+            Program.readfile();
+            if (Program.intedic[4].Substring(1, 4) == "this")
+                Dialog3.skip = true;
         }
+
     }
 }

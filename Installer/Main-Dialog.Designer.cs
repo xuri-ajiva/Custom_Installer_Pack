@@ -1,4 +1,4 @@
-﻿namespace Source_Engin_Moder
+﻿namespace Installer
 {
     partial class Main_Dialog
     {

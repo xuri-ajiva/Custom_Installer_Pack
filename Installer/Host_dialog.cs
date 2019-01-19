@@ -8,80 +8,92 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Host_dialog : Form
     {
+        private UserControl dialog;
+
         public Host_dialog()
         {
             InitializeComponent();
 
-            this.Grid.Location = new System.Drawing.Point(1, 1);
+            this.Grid.Location = new System.Drawing.Point(0, 0);
             this.Grid.Size = new System.Drawing.Size(500, 500);
-            this.ClientSize = new System.Drawing.Size(502, 502);
-            dialog11.Dock = DockStyle.Fill;
-            dialog21.Dock = DockStyle.Fill;
-            dialog31.Dock = DockStyle.Fill;
-            final1.Dock = DockStyle.Fill;
-            dialog11.Visible = false;
-            dialog21.Visible = false;
-            dialog31.Visible = false;
-            final1.Visible = false;
+            this.ClientSize = new System.Drawing.Size(500, 500);
+            /*
+            switch (Program.page)
+            {
+                case 1:
+                    this.dialog = new Source_Engin_Moder.Dialog1();
+                    break;
+                case 2:
+                    this.dialog = null;
+                    this.dialog = new Source_Engin_Moder.Dialog2();
+                    break;
+                case 3:
+                    this.dialog = new Source_Engin_Moder.Dialog3();
+                    break;
+                case 4:
+                    this.dialog = new Source_Engin_Moder.Final();
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
 
-            if (Program.page ==1)
-                dialog11.Visible = true;
 
-            if (Program.page == 2)
-                dialog21.Visible = true;
-
-            if (Program.page == 3)
-                dialog31.Visible = true;
-
-            if (Program.page == 4)
-                final1.Visible = true;
-
+            this.dialog.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dialog.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dialog.Location = new System.Drawing.Point(0, 0);
+            this.dialog.Name = "dialog11";
+            this.dialog.Size = new System.Drawing.Size(500, 500);
+            this.dialog.TabIndex = 0;
+            //this.dialog.Dock = DockStyle.Fill;
+            this.Grid.Controls.Add(this.dialog);
+            */
             update.Start();
 
         }
 
+        private int temp = 0;
         private void update_Tick(object sender, EventArgs e)
         {
-
-
-            if (Program.page == 1)
+            if (Program.page != temp)
             {
-                dialog21.Visible = false;
-                dialog31.Visible = false;
-                final1.Visible = false;
+                this.Grid.Controls.Clear();
+                this.dialog = null;
+                switch (Program.page)
+                {
 
-                dialog11.Visible = true;
+                    case 1:
+                        this.dialog = new Installer.Dialog1();
+                        break;
+                    case 2:
+                        this.dialog = new Installer.Dialog2();
+                        if (Program.min_page == 2)
+                            Dialog2.back = false;
+                        break;
+                    case 3:
+                        this.dialog = new Installer.Dialog3();
+                        break;
+                    case 4:
+                        this.dialog = new Installer.Final();
+                        break;
+                    default:
+                        Console.WriteLine("Default case");
+                        break;
+                }
             }
-            if (Program.page == 2)
-            {
-                dialog11.Visible = false;
-                dialog31.Visible = false;
-                final1.Visible = false;
-
-                dialog21.Visible = true;
-            }
-
-            if (Program.page == 3)
-            {
-                dialog11.Visible = false;
-                dialog21.Visible = false;
-                final1.Visible = false;
-
-                dialog31.Visible = true;
-            }
-
-            if (Program.page == 4)
-            {
-                dialog11.Visible = false;
-                dialog21.Visible = false;
-                dialog31.Visible = false;
-
-                final1.Visible = true;
-            }
+            temp = Program.page;
+            this.dialog.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dialog.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dialog.Location = new System.Drawing.Point(0, 0);
+            this.dialog.Name = "dialog11";
+            this.dialog.Size = new System.Drawing.Size(500, 500);
+            this.dialog.TabIndex = 0;
+            //this.dialog.Dock = DockStyle.Fill;
+            this.Grid.Controls.Add(this.dialog);
         }
         public void A_NEXT()
         {

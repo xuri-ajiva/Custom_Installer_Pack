@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 
-namespace Source_Engin_Moder
+namespace Installer
 {
     public partial class Final : UserControl
     {
@@ -19,13 +19,11 @@ namespace Source_Engin_Moder
         public Final()
         {
             InitializeComponent();
-            
         }
 
         private void b_next_Click(object sender, EventArgs e)
         {
-
-            button1_Click(null, null);
+            //button1_Click(null, null);
             this.PB.Visible = true;
             
             Thread t = new Thread(() => {
@@ -56,14 +54,7 @@ namespace Source_Engin_Moder
 
         private void Final_Load(object sender, EventArgs e)
         {
-            try
-            {
-                Program.intedic = File.ReadLines(Program.installfile).Where(x => x.StartsWith("#")).ToArray();
-            }
-            catch
-            {
-                Console.WriteLine("Error!");
-            }
+            Program.readfile();
             update.Start();
         }
         
@@ -77,10 +68,7 @@ namespace Source_Engin_Moder
                 label4.Text = "Name: " + Program.intedic[3].Substring(1);
                 label5.Text = "\nInstallations Verzeichnis: " + Program.installdir;
             }
-            catch
-            {
-
-            }
+            catch{ }
             try
             {
                 foreach (var x in log.Items)
@@ -90,12 +78,8 @@ namespace Source_Engin_Moder
                         l.listBox1.Items.Add(x);
                     }
                 }
-
             }
-            catch
-            {
-
-            }
+            catch{ }
         }
         private void Install_prepar()
         {
@@ -134,7 +118,7 @@ namespace Source_Engin_Moder
                     {
                         this.Invoke((MethodInvoker)delegate
                         {
-                            log.Items.Add("Creating Dyrectory!");
+                            log.Items.Add("Creating Dyrectory: ["+ Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1])+"]");
                         });
                         Directory.CreateDirectory(Path.GetDirectoryName(Program.installdir + "\\" + Program.cur[c][1]));
                     }
@@ -169,9 +153,11 @@ namespace Source_Engin_Moder
                 Program.error = 0;
                 Install_prepar();
             }
+            
         }
         private void t_p()
         {
+
             StreamWriter WStream1 = new StreamWriter(Program.regfull, true);
             WStream1.WriteLine(Program.intedic[3]);
             WStream1.Close();
@@ -187,6 +173,14 @@ namespace Source_Engin_Moder
                 .Replace('?', '-').Replace('<', '-').Replace('>', '-').Replace('|', '-'));
             WStream2.WriteLine(fil);
             WStream2.Close();
+            if (!Directory.Exists(Path.GetDirectoryName(fil.Substring(1))))
+            {
+                this.Invoke((MethodInvoker) delegate
+                {
+                    log.Items.Add("Creating Dyrectory: [" + Path.GetDirectoryName(fil.Substring(1)) + "]");
+                });
+                Directory.CreateDirectory(Path.GetDirectoryName(fil.Substring(1)));
+            }
             File.Copy(Program.installfile, fil.Substring(1), true);
         }
         public void surccess()
@@ -197,6 +191,7 @@ namespace Source_Engin_Moder
                 B_back.Enabled = false;
                 b_cancle.Text = "Finish";
                 b_next.Enabled = false;
+                this.button1.Visible = true;
             });
         }
 
@@ -209,6 +204,8 @@ namespace Source_Engin_Moder
         {
             try
             {
+                l.Close();
+                l = new Log();
                 l.Show();
                 this.log = l.listBox1;
             }

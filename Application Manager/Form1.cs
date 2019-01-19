@@ -194,29 +194,18 @@ namespace Application_Manager
         private void button2_Click(object sender, EventArgs e)
         {
             Program.error = 0;
-            try
+            for (var si = 0; si < lstTransfers.SelectedItems.Count; si++)
             {
-                if (lstTransfers.SelectedItems.Count == 1)
+                try
                 {
-                    if (MessageBox.Show("Remove conot be undoed!", "Shure?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you shure to uninstall " + lstTransfers.SelectedItems[si] + "\nUninstall conot be undoed!", "Shure?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                     {
-                        try
-                        {
-                            //dl_reg(si);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error!" + ex.Message);
-                        }
-                        //File.Delete()
+                        dl_reg(si);
+                        Thread.Sleep(9);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Es Kann nur eines deinstalliert werden!");
-                }
+                catch (Exception fx) { Console.WriteLine(fx.Message); }
             }
-            catch (Exception fx) { Console.WriteLine(fx.Message); }
         }
     }
 }

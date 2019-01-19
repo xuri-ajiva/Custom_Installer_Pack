@@ -1,4 +1,4 @@
-﻿namespace Source_Engin_Moder
+﻿namespace Installer
 {
     partial class Dialog1
     {
@@ -44,7 +44,7 @@
             this.open.Name = "open";
             this.open.Size = new System.Drawing.Size(140, 25);
             this.open.TabIndex = 9;
-            this.open.Text = "instalations Anweisungen";
+            this.open.Text = "Anweisungen Datei";
             this.open.UseVisualStyleBackColor = true;
             this.open.Click += new System.EventHandler(this.open_Click);
             // 
