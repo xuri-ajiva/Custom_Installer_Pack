@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using AIO;
 
-namespace Application_Manager
+namespace ApplicationManager
 {
     public partial class Form1 : Form
     {

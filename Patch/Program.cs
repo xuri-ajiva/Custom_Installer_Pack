@@ -28,19 +28,21 @@ namespace Patch
 
             Directory.CreateDirectory(pat);
 
-            File.Create(pat + "Application Manager.exe").Close();
-            File.Create(pat + "Creator.exe").Close();
-            File.Create(pat + "Installer.exe").Close();
-            File.Create(pat + "AIO.dll").Close();
+            Packer.GET_Strings.DePackTo(pat);
+            
+            //File.Create(pat + "Application Manager.exe").Close();
+            //File.Create(pat + "Creator.exe").Close();
+            //File.Create(pat + "Installer.exe").Close();
+            //File.Create(pat + "AIO.dll").Close();
+            //
+            //File.WriteAllBytes(pat + "Application Manager.exe", Packer.GET_Strings.build(Packer.GET_Strings.Application_Manager_exe));
+            //File.WriteAllBytes(pat + "Creator.exe", Packer.GET_Strings.build(Packer.GET_Strings.Creator_exe));
+            //File.WriteAllBytes(pat + "Installer.exe", Packer.GET_Strings.build(Packer.GET_Strings.Installer_exe));
+            //File.WriteAllBytes(pat + "AIO.dll", Packer.GET_Strings.build(Packer.GET_Strings.AIO_dll));
 
-            File.WriteAllBytes(pat + "Application Manager.exe", Packer.GET_Strings.build(Packer.GET_Strings.Application_Manager_exe));
-            File.WriteAllBytes(pat + "Creator.exe", Packer.GET_Strings.build(Packer.GET_Strings.Creator_exe));
-            File.WriteAllBytes(pat + "Installer.exe", Packer.GET_Strings.build(Packer.GET_Strings.Installer_exe));
-            File.WriteAllBytes(pat + "AIO.dll", Packer.GET_Strings.build(Packer.GET_Strings.AIO_dll));
-
-            Process.Start(pat + "Application Manager.exe");
+            Process.Start(pat + "ApplicationManager.exe");
             Thread.Sleep(3000);
-            Process.Start("taskkill", "/IM \"Application Manager.exe\" /f");
+            Process.Start("taskkill", "/IM \"ApplicationManager.exe\" /f");
             Process.Start(pat + "Creator.exe");
             Thread.Sleep(3000);
             Process.Start("taskkill", "/IM Creator.exe /f");

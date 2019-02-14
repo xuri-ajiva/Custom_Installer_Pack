@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Inst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Creator", "Creator\Creator.csproj", "{58DBD907-A305-49F5-886E-0E01AF052213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application Manager", "Application Manager\Application Manager.csproj", "{EB2D03AB-E745-477F-840D-C54995DA3D31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationManager", "Application Manager\ApplicationManager.csproj", "{EB2D03AB-E745-477F-840D-C54995DA3D31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIO", "AIO\AIO.csproj", "{F91252E4-3284-400D-B825-C9F8E71E0AD8}"
 EndProject

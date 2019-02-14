@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AIO;
 
-namespace Application_Manager
+namespace ApplicationManager
 {
     static class Program
     {
