@@ -22,7 +22,6 @@ namespace Installer
         {
             InitializeComponent();
         }
-
         private void b_next_Click(object sender, EventArgs e)
         {
             //button1_Click(null, null);
