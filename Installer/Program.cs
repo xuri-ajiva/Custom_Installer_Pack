@@ -84,7 +84,6 @@ namespace Installer
             Log = new Log();
         }
 
-
         static void run()
         {
             while (true)

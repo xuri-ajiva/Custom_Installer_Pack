@@ -10,13 +10,12 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using AIO;
-
+using System.Diagnostics;
 
 namespace Installer
 {
     public partial class Final : UserControl
     {
-
         private static Log l = new Log();
         public Final()
         {
@@ -81,15 +80,7 @@ namespace Installer
         }
         private void Install_prepar()
         {
-            //list all files
-            for (int i = VAR.interduction; i < VAR.intedic.Length; i++)
-            {
-                VAR.cur[i] = VAR.intedic[i].Split('>');
-                this.Invoke((MethodInvoker)delegate
-                {
-                    log.Items.Add("[Info] " + VAR.intedic[i].Substring(1));
-                });
-            }
+            VAR.Spit_Lines();
             
             //Copy files
             start_install();
@@ -111,10 +102,10 @@ namespace Installer
         }
         public void start_install()
         {
-            //extract files
-            Extract_7zip();
             //copy  uninstall file to install dir
             t_p();
+            //extract files
+            Extract_7zip();
             //Copy all files To Install dir
             Copy_Files();
         }
@@ -153,6 +144,15 @@ namespace Installer
                     Exeption_Call(exp);
                 }
             }
+        }
+        private void Execute()
+        {
+            for (int i = 0; i < VAR.execute.Length; i++)
+                Process.Start(VAR.executecur[i][0], VAR.executecur[i][1]);
+        }
+        private void Reg_edit()
+        {
+            return;
         }
         public void G_retry()
         {

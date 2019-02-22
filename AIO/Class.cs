@@ -72,7 +72,44 @@ namespace AIO
             {
                 Console.WriteLine("[ERROR]: " + ex.Message);
             }
+            try
+            {
+                VAR.execute = File.ReadLines(VAR.installfile).Where(x => x.StartsWith("!")).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[ERROR]: " + ex.Message);
+            }
+            try
+            {
+                VAR._7_zip = File.ReadLines(VAR.installfile).Where(x => x.StartsWith("?")).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[ERROR]: " + ex.Message);
+            }
+            Spit_Lines();
         }
+
+        public static void Spit_Lines()
+        {
+            for (int i = VAR.interduction; i < VAR.intedic.Length; i++)
+            {
+                VAR.cur[i] = VAR.intedic[i].Split('>');
+                Console.WriteLine("[Info]: " + VAR.intedic[i].Substring(1));
+            }
+            for (int i = 0; i < VAR.execute.Length; i++)
+            {
+                VAR.executecur[i] = VAR.execute[i].Split('>');
+                Console.WriteLine("[Info]: " + VAR.execute[i].Substring(1));
+            }
+            for (int i = 0; i < VAR._7_zip.Length; i++)
+            {
+                VAR._7_zipcur[i] = VAR._7_zip[i].Split('>');
+                Console.WriteLine("[Info]: " + VAR._7_zip[i].Substring(1));
+            }
+        }
+
         public static void CopyToSystemDir()
         {
             ///copy Applicatiom
@@ -172,8 +209,8 @@ namespace AIO
                 fs1.Close();
                 fs2.Close();
 
-                //File.Delete(file1);
-                //File.Delete(file2);
+                File.Delete(file1);
+                File.Delete(file2);
 
                 // Return false to indicate files are different
                 return false;
@@ -183,8 +220,8 @@ namespace AIO
             fs1.Close();
             fs2.Close();
 
-            //File.Delete(file1);
-            //File.Delete(file2);
+            File.Delete(file1);
+            File.Delete(file2);
 
             return !s;
         }
