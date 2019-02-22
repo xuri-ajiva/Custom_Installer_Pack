@@ -19,7 +19,7 @@ namespace AIO
         /// </summary>
         //# reg
         public static string reg = @"C:\Windows" + @"\Installer_Custom\";
-        public static string dll = "AIO.dll"; 
+        public static string dll = "AIO.dll";
         public static string regname = "install.inst";
         public static string regiconname = "installer.ico";
         public static string regfull = reg + regname;
@@ -35,6 +35,15 @@ namespace AIO
         public static string[] intedic = new string[9999];
         public static string[][] cur = new string[9999][];
         public static int interduction = 5;
+
+        public static string[] regedit = new string[9999];
+        public static string[][] regeditcur = new string[9999][];
+
+        public static string[] execute = new string[9999];
+        public static string[][] executecur = new string[9999][];
+
+        public static string[] _7_zip = new string[9999];
+        public static string[][] _7_zipcur = new string[9999][];
 
         //# errror and ui controal
         public static int error = 0;
@@ -59,9 +68,9 @@ namespace AIO
             {
                 VAR.intedic = File.ReadLines(VAR.installfile).Where(x => x.StartsWith("#")).ToArray();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("[ERROR]: "+ex.Message);
+                Console.WriteLine("[ERROR]: " + ex.Message);
             }
         }
         public static void CopyToSystemDir()
@@ -69,30 +78,51 @@ namespace AIO
             ///copy Applicatiom
             if (!Path.Equals(Path.GetDirectoryName(Application.ExecutablePath) + @"\", VAR.reg))
             {
+
                 //dll
+                string current_dll = Path.GetDirectoryName(Application.ExecutablePath) + @"\" + VAR.dll;
+
                 if (File.Exists(VAR.dllfull))
-                    try
-                    {
-                        Thread.Sleep(500);
-                        Console.WriteLine("[DELET]: " + VAR.dllfull);
-                        File.Delete(VAR.dllfull);
-                    }
-                    catch { }
-                Thread.Sleep(500);
-                Console.WriteLine("[COPY]: " + Path.GetDirectoryName(Application.ExecutablePath) + @"\" + VAR.dll + " --> " + VAR.dllfull);
-                try { File.Copy(Path.GetDirectoryName(Application.ExecutablePath) + @"\" + VAR.dll, VAR.dllfull); }catch { }
+                    if (!FileCompare(VAR.dllfull, current_dll))
+                        try
+                        {
+                            Thread.Sleep(500);
+                            Console.WriteLine("[DELET]: " + VAR.dllfull);
+                            File.Delete(VAR.dllfull);
+
+                            Thread.Sleep(500);
+                            copy_with_log(current_dll, VAR.dllfull);
+                        }
+                        catch { }
+                    else
+                    { }
+                else
+                {
+                    copy_with_log(current_dll, VAR.dllfull);
+                }
+
                 //programm
-                if (File.Exists(VAR.reg + Path.GetFileName(Application.ExecutablePath)))
-                    try
-                    {
-                        Thread.Sleep(500);
-                        Console.WriteLine("[DELET]: " + VAR.reg + Path.GetFileName(Application.ExecutablePath));
-                        File.Delete(VAR.reg + Path.GetFileName(Application.ExecutablePath));
-                    }
-                    catch { }
-                Thread.Sleep(500);
-                Console.WriteLine("[COPY]: " + Application.ExecutablePath + " --> " + VAR.reg + Path.GetFileName(Application.ExecutablePath));
-                try { File.Copy(Application.ExecutablePath, VAR.reg + Path.GetFileName(Application.ExecutablePath)); } catch { }
+                string dest_exec = VAR.reg + Path.GetFileName(Application.ExecutablePath);
+
+                if (File.Exists(dest_exec))
+                    if (!FileCompare(dest_exec, Application.ExecutablePath))
+                        try
+                        {
+                            Thread.Sleep(500);
+                            Console.WriteLine("[DELET]: " + dest_exec);
+                            File.Delete(dest_exec);
+
+                            Thread.Sleep(500);
+                            copy_with_log(Application.ExecutablePath, dest_exec);
+                        }
+                        catch { }
+                    else
+                    { }
+                else
+                {
+                    copy_with_log(Application.ExecutablePath, dest_exec);
+                }
+
                 //exit
                 Console.WriteLine("[Finished]");
                 Thread.Sleep(2000);
@@ -103,5 +133,61 @@ namespace AIO
                 Environment.Exit(0);
             }
         }
+        public static void copy_with_log(string source, string dest)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("[COPY]: " + source + " --> " + dest);
+            try
+            { File.Copy(source, dest); }
+            catch (Exception e) { Console.WriteLine("[ERROR]: " +e.Message); }
+        }
+        private static bool FileCompare(string file1, string file2)
+        {
+            FileStream fs1;
+            FileStream fs2;
+
+            // Determine if the same file was referenced two times.
+            if (file1 == file2)
+            {
+                // Return true to indicate that the files are the same.
+                return true;
+            }
+
+            // Open the two files.
+
+            File.Copy(file2, file2 + "_test", true);
+            File.Copy(file1, file1 + "_test",true);
+
+            file1 += "_test";
+            file2 += "_test";
+
+            fs1 = new FileStream(file1, FileMode.Open);
+            fs2 = new FileStream(file2, FileMode.Open);
+
+            // Check the file sizes. If they are not the same, the files 
+            // are not the same.
+            if (fs1.Length != fs2.Length)
+            {
+                // Close the file
+                fs1.Close();
+                fs2.Close();
+
+                //File.Delete(file1);
+                //File.Delete(file2);
+
+                // Return false to indicate files are different
+                return false;
+            }
+            bool s = (fs1.GetHashCode() == fs2.GetHashCode());
+
+            fs1.Close();
+            fs2.Close();
+
+            //File.Delete(file1);
+            //File.Delete(file2);
+
+            return !s;
+        }
+
     }
 }

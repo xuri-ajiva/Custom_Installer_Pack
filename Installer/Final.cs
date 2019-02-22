@@ -52,14 +52,11 @@ namespace Installer
             });
             t.Start();
         }
-
-
         private void Final_Load(object sender, EventArgs e)
         {
             VAR.readfile();
             update.Start();
         }
-        
         private void update_Tick(object sender, EventArgs e)
         {
             try
@@ -85,6 +82,7 @@ namespace Installer
         }
         private void Install_prepar()
         {
+            //list all files
             for (int i = VAR.interduction; i < VAR.intedic.Length; i++)
             {
                 VAR.cur[i] = VAR.intedic[i].Split('>');
@@ -92,12 +90,14 @@ namespace Installer
                 {
                     log.Items.Add("[Info] " + VAR.intedic[i].Substring(1));
                 });
-
             }
             
+            //Copy files
             start_install();
+
             if (VAR.error == 0)
             {
+                //finish process
                 surccess();
             }
             else
@@ -106,46 +106,60 @@ namespace Installer
                 {
                     log.Items.Add("Installation With " + VAR.error + " Errors finished!");
                 });
+                //ask for retry
                 G_retry();
             }
         }
         public void start_install()
         {
+            //extract files
+            Extract_7zip();
+            //copy  uninstall file to install dir
             t_p();
+            //Copy all files To Install dir
+            Copy_Files();
+        }
+        private void Extract_7zip()
+        {
+            return;
+        }
+        private void Copy_Files()
+        {
             for (int c = VAR.interduction; c < VAR.intedic.Length; c++)
             {
                 try
                 {
-                    if (!Directory.Exists(Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1])))
+                    //check directory
+                    string directory = Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1]);
+                    if (!Directory.Exists(directory))
                     {
                         this.Invoke((MethodInvoker)delegate
                         {
-                            log.Items.Add("Creating Dyrectory: ["+ Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1])+"]");
+                            log.Items.Add("Creating Dyrectory: [" + directory + "]");
                         });
-                        Directory.CreateDirectory(Path.GetDirectoryName(VAR.installdir + "\\" + VAR.cur[c][1]));
+                        Directory.CreateDirectory(directory);
                     }
-                    File.Copy(VAR.installfiles + "\\" + VAR.cur[c][0].Substring(1), VAR.installdir + "\\" + VAR.cur[c][1], true);
+
+                    //copy file
+                    string dir1 = VAR.installfiles + "\\" + VAR.cur[c][0].Substring(1);
+                    string dir2 = VAR.installdir + "\\" + VAR.cur[c][1];
+                    File.Copy(dir1, dir2, true);
                     this.Invoke((MethodInvoker)delegate
                     {
-                        log.Items.Add("[Copy] " + VAR.installfiles + "\\" + VAR.cur[c][0].Substring(1) + "   =>   " + VAR.installdir + "\\" + VAR.cur[c][1]);
+                        log.Items.Add("[Copy] " + dir1 + "   =>   " + dir2);
                     });
                 }
                 catch (Exception exp)
                 {
-                    if (exp.Message.ToLower() != "Der Index war außerhalb des Arraybereichs.".ToLower())
-                    {
-                        VAR.error++;
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            log.Items.Add("[Error]:" + exp.Message);
-                        });
-                    }
+                    Exeption_Call(exp);
                 }
             }
         }
         public void G_retry()
         {
+            //ask for retry
             var r = MessageBox.Show("Installation With " + VAR.error + " Errors finished!\nRetry ?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand);
+            //yes
             if (r == DialogResult.Yes)
             {
                 this.Invoke((MethodInvoker)delegate
@@ -155,15 +169,19 @@ namespace Installer
                 VAR.er = true;
                 VAR.error = 0;
                 Install_prepar();
-            }else if (r == DialogResult.No)
+            }
+            //no
+            else if (r == DialogResult.No)
             {
+                //finish installer
                 surccess();
             }
             
         }
+        //copy  uninstall file to install dir
         private void t_p()
         {
-
+            //no comment!
             StreamWriter WStream1 = new StreamWriter(VAR.regfull, true);
             WStream1.WriteLine(VAR.intedic[3]);
             WStream1.Close();
@@ -191,6 +209,7 @@ namespace Installer
         }
         public void surccess()
         {
+            //finish installer
             this.Invoke((MethodInvoker)delegate
             {
                 log.Items.Add("Installation surccess!");
@@ -200,12 +219,10 @@ namespace Installer
                 this.button1.Visible = true;
             });
         }
-
         private void b_cancle_Click(object sender, EventArgs e)
         {
             Environment.Exit(VAR.error);
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -217,10 +234,21 @@ namespace Installer
             }
             catch { }
         }
-
         private void B_back_Click(object sender, EventArgs e)
         {
             VAR.page--;
+        }
+        private void Exeption_Call(Exception e)
+        {
+            //check exeption and print to screen
+            if (e.Message.ToLower() != "Der Index war außerhalb des Arraybereichs.".ToLower())
+            {
+                VAR.error++;
+                this.Invoke((MethodInvoker)delegate
+                {
+                    log.Items.Add("[Error]:" + e.Message);
+                });
+            }
         }
     }
 }

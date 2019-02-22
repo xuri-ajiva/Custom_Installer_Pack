@@ -72,7 +72,7 @@ namespace Installer
             //building programm dir
             Directory.CreateDirectory(VAR.reg);
             File.Open(VAR.regfull, FileMode.OpenOrCreate).Close();
-
+            
             VAR.CopyToSystemDir();
 
             Application.EnableVisualStyles();
